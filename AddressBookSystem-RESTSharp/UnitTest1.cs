@@ -126,5 +126,23 @@ namespace AddressBookSystem_RESTSharp
             Assert.AreEqual("442205", contact.Zip);
             Console.WriteLine(response.Content);
         }
+
+        /*UC25:- Ability to Delete Entry in Address Book JSONServer and sync with Address Book Application Memory.
+                 - Use RESTSharp for REST Api Calls from MSTest Test Code.
+         */
+        [TestMethod]
+        public void OnCallingDeleteAPI_ReturnSuccessStatus()
+        {
+            //Arrange
+            //Initialize the request for PUT to add new employee
+            RestRequest request = new RestRequest("/Contacts/4", Method.DELETE);
+
+            //Act
+            IRestResponse response = client.Execute(request);
+
+            //Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Console.WriteLine(response.Content);
+        }
     }
 }
