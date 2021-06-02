@@ -1,0 +1,28 @@
+{
+  "Contacts": [
+    {
+      "id": 1,
+      "firstname": "Omprakash",
+      "lastname": "Khawshi",
+      "PhoneNumber": "8788616249",
+      "address": "Alandi",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "zip": "412105",
+      "email": "om@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstname": "Om",
+      "lastname":"Ka",
+      "PhoneNumber": "8788616248",
+      "address": "Karanja",
+      "city": "Karanja",
+      "state": "Maharashtra",
+      "zip": "412105",
+      "email": "or@gmail.com"
+    }
+    
+    
+  ]
+}
