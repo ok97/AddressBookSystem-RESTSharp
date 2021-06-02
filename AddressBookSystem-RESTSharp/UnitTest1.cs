@@ -45,7 +45,50 @@ namespace AddressBookSystem_RESTSharp
             Assert.AreEqual(2, employeeList.Count);
             foreach (Contact c in employeeList)
             {
-                Console.WriteLine($"Id: {c.Id}\tFullName: {c.FirstName} {c.LastName}\tPhoneNo: {c.PhoneNumber}\tAddress: {c.Address}\tCity: {c.City}\tState: {c.State}\tZip: {c.Zip}\tEmail: {c.Email}");
+                Console.WriteLine($"Id:- {c.Id}\tFullName:- {c.FirstName} {c.LastName}\tPhoneNumber:- {c.PhoneNumber}\tAddress:- {c.Address}\tCity:- {c.City}\tState:- {c.State}\tZip:- {c.Zip}\tEmail:- {c.Email}");
+            }
+        }
+        /*UC23:- Ability to Add Multiple Entries to Address Book JSONServer and sync with Address Book Application Memory.
+                 - Use RESTSharp for REST Api Calls from MSTest Test Code
+         */
+
+        [TestMethod]
+        public void OnCallingPostAPIForAContactListWithMultipleContacts_ReturnContactObject()
+        {
+            // Arrange
+            List<Contact> contactList = new List<Contact>();
+            contactList.Add(new Contact { FirstName = "Priyanshu", LastName = "PataNahi", PhoneNumber = "789456123", Address = "UPWale", City = "PataNahi", State = "UP", Zip = "789554", Email = "ps@gmail.com" });
+            contactList.Add(new Contact { FirstName = "Vishal", LastName = "MalumNahi", PhoneNumber = "321654987", Address = "Mumbai", City = "Mumbai", State = "Maharashtra", Zip = "442206", Email = "vs@gmail.com" });
+            contactList.Add(new Contact { FirstName = "Ekta", LastName = "Kumbhare", PhoneNumber = "123456987", Address = "Bajaj Nagar", City = "Pune", State = "Maharashtra", Zip = "442203", Email = "ek@gmail.com" });
+
+            //Iterate the loop for each contact
+            foreach (var v in contactList)
+            {
+                //Initialize the request for POST to add new contact
+                RestRequest request = new RestRequest("/Contacts", Method.POST);
+                JsonObject jsonObj = new JsonObject();
+                jsonObj.Add("firstname", v.FirstName);
+                jsonObj.Add("lastname", v.LastName);
+                jsonObj.Add("PhoneNumber", v.PhoneNumber);
+                jsonObj.Add("address", v.Address);
+                jsonObj.Add("city", v.City);
+                jsonObj.Add("state", v.State);
+                jsonObj.Add("zip", v.Zip);
+                jsonObj.Add("email", v.Email);
+
+                //Added parameters to the request object such as the content-type and attaching the jsonObj with the request
+                request.AddParameter("application/json", jsonObj, ParameterType.RequestBody);
+
+                //Act
+                IRestResponse response = client.Execute(request);
+
+                //Assert
+                Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+                Contact contact = JsonConvert.DeserializeObject<Contact>(response.Content);
+                Assert.AreEqual(v.FirstName, contact.FirstName);
+                Assert.AreEqual(v.LastName, contact.LastName);
+                Assert.AreEqual(v.PhoneNumber, contact.PhoneNumber);
+                Console.WriteLine(response.Content);
             }
         }
     }

@@ -14,15 +14,46 @@
     {
       "id": 2,
       "firstname": "Om",
-      "lastname":"Ka",
+      "lastname": "Ka",
       "PhoneNumber": "8788616248",
       "address": "Karanja",
       "city": "Karanja",
       "state": "Maharashtra",
       "zip": "412105",
       "email": "or@gmail.com"
+    },
+    {
+      "firstname": "Priyanshu",
+      "lastname": "PataNahi",
+      "phoneNo": "321654987",
+      "address": "Mumbai",
+      "city": "PataNahi",
+      "state": "UP",
+      "zip": "789554",
+      "email": "ps@gmail.com",
+      "id": 3
+    },
+    {
+      "firstname": "Vishal",
+      "lastname": "MalumNahi",
+      "phoneNo": "789456123",
+      "address": "Mumbai",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "zip": "442206",
+      "email": "vs@gmail.com",
+      "id": 4
+    },
+    {
+      "firstname": "Ekta",
+      "lastname": "Kumbhare",
+      "phoneNo": "123456987",
+      "address": "Bajaj Nagar",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "zip": "44223",
+      "email": "ek@gmail.com",
+      "id": 5
     }
-    
-    
   ]
 }
